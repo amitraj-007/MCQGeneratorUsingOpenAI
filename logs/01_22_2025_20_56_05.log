@@ -1,6 +1,0 @@
-[2025-01-22 20:56:21,109] 1092 openai._base_client - INFO - Retrying request to /chat/completions in 0.493797 seconds
-[2025-01-22 20:56:21,639] 1092 openai._base_client - INFO - Retrying request to /chat/completions in 0.772313 seconds
-[2025-01-22 20:57:58,623] 1092 openai._base_client - INFO - Retrying request to /chat/completions in 0.484013 seconds
-[2025-01-22 20:57:59,142] 1092 openai._base_client - INFO - Retrying request to /chat/completions in 0.958071 seconds
-[2025-01-22 20:59:01,580] 1092 openai._base_client - INFO - Retrying request to /chat/completions in 0.414314 seconds
-[2025-01-22 20:59:02,020] 1092 openai._base_client - INFO - Retrying request to /chat/completions in 0.955478 seconds
