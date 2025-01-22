@@ -1,6 +1,1 @@
-MCQ,Choices,Correct
-What is the core philosophy of LangChain?,a: Modularity and chainability | b: Flexibility and scalability | c: Efficiency and speed | d: Accuracy and precision,a
-Which component of LangChain is used to store the state of a conversation or process?,a: LLMs | b: Prompts | c: Memory | d: Chains,c
-What type of memory in LangChain is used for recent interactions?,a: Short-Term Memory | b: Long-Term Memory | c: Sequential Memory | d: Persistent Memory,a
-Which component of LangChain dynamically decides which action to take based on user input and available tools?,a: Memory | b: Agents | c: Tools | d: Retrievers,b
-What is one of the common use cases of LangChain?,a: Building cars | b: Cooking recipes | c: Chatbots | d: Weather forecasting,c
+

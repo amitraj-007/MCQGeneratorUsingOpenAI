@@ -1,166 +1,23 @@
-What is LangChain?
-LangChain is a framework designed to build applications powered by Large Language Models (LLMs), such as OpenAI's GPT-3.5 or GPT-4. It provides tools, abstractions, and integrations that make it easier to create applications like chatbots, question-answering systems, summarization tools, and more.
+OpenAI is an American artificial intelligence (AI) research organization founded in December 2015 and headquartered in San Francisco, California. Its stated mission is to develop "safe and beneficial" artificial general intelligence (AGI), which it defines as "highly autonomous systems that outperform humans at most economically valuable work".[5] As a leading organization in the ongoing AI boom,[6] OpenAI is known for the GPT family of large language models, the DALL-E series of text-to-image models, and a text-to-video model named Sora.[7][8] Its release of ChatGPT in November 2022 has been credited with catalyzing widespread interest in generative AI.
 
-LangChain's core philosophy is modularity and chainability, meaning it helps developers break down complex workflows into smaller, manageable, and reusable components.
+The organization consists of the non-profit OpenAI, Inc.,[9] registered in Delaware, and its for-profit subsidiary introduced in 2019, OpenAI Global, LLC.[10] Microsoft owns roughly 49% of OpenAI's equity, having invested US$13 billion.[11] It also provides computing resources to OpenAI through its cloud platform, Microsoft Azure.[12]
 
-Key Components of LangChain
-LLMs (Large Language Models):
+In 2023 and 2024, OpenAI faced multiple lawsuits for alleged copyright infringement against authors and media companies whose work was used to train some of OpenAI's products. In November 2023, OpenAI's board removed Sam Altman as CEO, citing a lack of confidence in him, but reinstated him five days later following a reconstruction of the board. Throughout 2024, roughly half of then-employed AI safety researchers left OpenAI, citing the company's prominent role in an industry-wide problem.[13][14]
 
-LangChain supports multiple LLMs (e.g., OpenAI, Hugging Face, Cohere).
-It provides wrappers to interact with these models and configure parameters like temperature, model_name, and max_tokens.
-Prompts:
+History
+2015–2018: Non-profit beginnings
 
-LangChain offers tools to manage, format, and template prompts effectively.
-You can define reusable prompt templates and dynamically inject variables.
-Example:
+Former headquarters at the Pioneer Building in San Francisco
+In December 2015, OpenAI was founded by Sam Altman, Elon Musk, Ilya Sutskever, Greg Brockman, Trevor Blackwell, Vicki Cheung, Andrej Karpathy, Durk Kingma, John Schulman, Pamela Vagata, and Wojciech Zaremba, with Sam Altman and Elon Musk as the co-chairs. A total of $1 billion in capital was pledged by Sam Altman, Greg Brockman, Elon Musk, Reid Hoffman, Jessica Livingston, Peter Thiel, Amazon Web Services (AWS), Infosys, and YC Research.[15][16] The actual collected total amount of contributions was only $130 million until 2019.[10] According to an investigation led by TechCrunch, Musk was its largest donor while YC Research did not contribute anything at all.[17] The organization stated it would "freely collaborate" with other institutions and researchers by making its patents and research open to the public.[18][19] OpenAI was initially run from Brockman's living room.[20] It was later headquartered at the Pioneer Building in the Mission District, San Francisco.[21][22]
 
-python
-Copy
-Edit
-from langchain.prompts import PromptTemplate
+According to Wired, Brockman met with Yoshua Bengio, one of the "founding fathers" of deep learning, and drew up a list of the "best researchers in the field".[23] Brockman was able to hire nine of them as the first employees in December 2015.[23] In 2016, OpenAI paid corporate-level (rather than nonprofit-level) salaries, but did not pay AI researchers salaries comparable to those of Facebook or Google.[23]
 
-template = "Translate the following text to French: {text}"
-prompt = PromptTemplate(input_variables=["text"], template=template)
-Chains:
+Microsoft's Peter Lee stated that the cost of a top AI researcher exceeds the cost of a top NFL quarterback prospect.[23] OpenAI's potential and mission drew these researchers to the firm; a Google employee said he was willing to leave Google for OpenAI "partly because of the very strong group of people and, to a very large extent, because of its mission."[23] Brockman stated that "the best thing that I could imagine doing was moving humanity closer to building real AI in a safe way."[23] OpenAI co-founder Wojciech Zaremba stated that he turned down "borderline crazy" offers of two to three times his market value to join OpenAI instead.[23]
 
-Chains allow you to link multiple steps in a pipeline.
-For example, a chain might take a user’s query, call an LLM to process it, and then store the result in a database.
-Types of Chains:
+In April 2016, OpenAI released a public beta of "OpenAI Gym", its platform for reinforcement learning research.[24] Nvidia gifted its first DGX-1 supercomputer to OpenAI in August 2016 to help it train larger and more complex AI models with the capability of reducing processing time from six days to two hours.[25][26] In December 2016, OpenAI released "Universe", a software platform for measuring and training an AI's general intelligence across the world's supply of games, websites, and other applications.[27][28][29][30]
 
-Simple Chains: Sequentially process inputs and outputs.
-Sequential Chains: Combine multiple chains in sequence.
-Memory Chains: Keep context across multiple calls, useful for chatbots.
-Example:
+In 2017, OpenAI spent $7.9 million, or a quarter of its functional expenses, on cloud computing alone.[31] In comparison, DeepMind's total expenses in 2017 were $442 million. In the summer of 2018, simply training OpenAI's Dota 2 bots required renting 128,000 CPUs and 256 GPUs from Google for multiple weeks.
 
-python
-Copy
-Edit
-from langchain.chains import LLMChain
-from langchain.chat_models import ChatOpenAI
+In 2018, Musk resigned from his Board of Directors seat, citing "a potential future conflict [of interest]" with his role as CEO of Tesla due to Tesla's AI development for self-driving cars.[32] Sam Altman claims that Musk believed that OpenAI had fallen behind other players like Google and Musk proposed instead to take over OpenAI himself, which the board rejected. Musk subsequently left OpenAI.
 
-llm = ChatOpenAI(temperature=0.7)
-prompt = PromptTemplate(template="What's the capital of {country}?", input_variables=["country"])
-chain = LLMChain(llm=llm, prompt=prompt)
-
-result = chain.run({"country": "France"})
-print(result)  # "Paris"
-Memory:
-
-Memory is used to store the state of a conversation or process.
-Example: Keeping track of previous questions and answers in a chatbot.
-Types:
-
-Short-Term Memory: Used for recent interactions.
-Long-Term Memory: Persistent memory for long-term context.
-Example:
-
-python
-Copy
-Edit
-from langchain.memory import ConversationBufferMemory
-
-memory = ConversationBufferMemory()
-Agents:
-
-Agents dynamically decide which action to take based on user input and available tools.
-Example: A chatbot that can perform calculations, retrieve documents, or generate text.
-Example Agent Workflow:
-
-Input: "What's 2+2?"
-Agent decides to call a calculator tool.
-Output: "4"
-Tools:
-
-Tools are external utilities that the LLM can use.
-Examples:
-Calculators
-Search engines
-Custom APIs
-Tools can be combined with agents to build dynamic systems.
-Example:
-
-python
-Copy
-Edit
-from langchain.agents import load_tools
-tools = load_tools(["serpapi", "llm-math"])
-Retrievers and Vector Stores:
-
-LangChain supports integration with vector databases (e.g., Pinecone, Weaviate, FAISS) to retrieve relevant documents.
-Useful for building question-answering systems with large datasets.
-Why Use LangChain?
-Modularity:
-
-Break your application into manageable components.
-Reuse components across multiple projects.
-Ease of Integration:
-
-LangChain integrates with popular LLM providers, databases, APIs, and tools.
-Support for Complex Workflows:
-
-Build applications that involve multiple steps, dynamic decisions, or memory.
-Built-in Memory:
-
-Enables conversational agents to retain context.
-Rich Ecosystem:
-
-Plug-and-play support for many tools like search engines, calculators, APIs, and more.
-LangChain Ecosystem
-LLM Providers:
-
-OpenAI (e.g., GPT-3.5, GPT-4)
-Hugging Face models
-Cohere, Anthropic, and more.
-Vector Databases:
-
-Pinecone, Weaviate, FAISS, and Chroma for document retrieval and embeddings.
-Tool Integration:
-
-Google Search (via SerpAPI)
-Python REPL
-WolframAlpha
-Custom APIs.
-Frameworks:
-
-Works well with Python, but also supports JavaScript/TypeScript.
-Common Use Cases
-Chatbots:
-
-Build conversational agents with memory and tool integrations.
-Document QA:
-
-Answer questions from documents by retrieving and summarizing content.
-Summarization:
-
-Summarize long texts or documents into concise formats.
-Code Assistance:
-
-Use agents to write, debug, or analyze code.
-Custom Workflows:
-
-Build domain-specific applications like legal advisors, customer support bots, or creative writing assistants.
-Installation
-To get started with LangChain:
-
-bash
-Copy
-Edit
-pip install langchain
-pip install openai  # For OpenAI integrations
-Basic Example
-Here’s a simple chatbot example using LangChain:
-
-python
-Copy
-Edit
-from langchain.chat_models import ChatOpenAI
-from langchain.chains import ConversationChain
-from langchain.memory import ConversationBufferMemory
-
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-memory = ConversationBufferMemory()
-
-chatbot = ConversationChain(llm=llm, memory=memory)
-
-response = chatbot.run("Hello, how can I assist you?")
-print(response)
+In February 2019, GPT-2 was announced, which gained attention for its ability to generate human-like text.[33]
